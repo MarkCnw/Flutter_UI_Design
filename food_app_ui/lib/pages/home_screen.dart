@@ -21,11 +21,12 @@ class _CoffeeAppHomeScreenState extends State<CoffeeAppHomeScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topRight ,
-                  end: Alignment.topLeft,
+                  end: Alignment.bottomLeft,
                   colors:[
                     Color.fromARGB(255, 17, 17, 17)
                     , Color.fromARGB(255, 49, 49, 49)
-                  ] )
+                  ] 
+                  ),
               ),
             )
           ],
