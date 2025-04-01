@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:food_delivery_provider/onboard_page.dart';
+import 'package:flutter/material.dart'; 
+import 'package:food_delivery_provider/View/onboard_page.dart';
 
 void main() {
   runApp(const MyApp());
