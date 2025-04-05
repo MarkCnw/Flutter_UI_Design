@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_provider/Model/category_model.dart';
 import 'package:food_delivery_provider/Model/product_model.dart';
+import 'package:food_delivery_provider/Provider/cart_provider.dart';
+import 'package:food_delivery_provider/View/cart.dart';
 import 'package:food_delivery_provider/consts.dart';
 import 'package:food_delivery_provider/widget/food_item_product.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   int selectIndex = 0;
   String category = '';
   List<MyProductModel> productModel = [];
+
   @override
   void initState() {
     super.initState();
@@ -27,26 +31,137 @@ class _HomePageState extends State<HomePage> {
   void filterproductBycategory(String selectCategory) {
     setState(() {
       category = selectCategory;
-      productModel =
-          myProductModel
-              .where(
-                (element) =>
-                    element.category.toLowerCase() ==
-                    selectCategory.toLowerCase(),
-              )
-              .toList();
+      productModel = myProductModel
+          .where(
+            (element) =>
+                element.category.toLowerCase() ==
+                selectCategory.toLowerCase(),
+          )
+          .toList();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          headerParts(),
-          SizedBox(height: 35),
           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: const [
+                          Text(
+                            "Your Location",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black45,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Colors.black,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Row(
+                        children: const [
+                          Icon(Icons.location_on, color: korange, size: 20),
+                          SizedBox(width: 5),
+                          Text(
+                            "MarkYamada",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: kblack,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black12,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.search,
+                        color: kblack,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Stack(
+                      alignment: AlignmentDirectional.topCenter,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.symmetric(vertical: 15),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black12,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Icon(
+                            Icons.shopping_cart_outlined,
+                            color: kblack,
+                          ),
+                        ),
+                        cartProvider.carts.isNotEmpty
+                            ? Positioned(
+                                right: 0,
+                                top: 0,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const Cart(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xfff95f60),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Text(
+                                      cartProvider.carts.length.toString(),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 35),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Text(
               "Let find the best food for you",
@@ -58,8 +173,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 25),
-          Padding(
+          const SizedBox(height: 25),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +192,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
@@ -126,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                                   myCategories[index].image,
                                   width: 50,
                                   fit: BoxFit.cover,
-                                )
+                                ),
                               ],
                             ),
                             const SizedBox(height: 20),
@@ -136,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                                 color: kblack,
                                 fontWeight: FontWeight.w600,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -146,9 +261,9 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
               "จำนวน  ${productModel.length}",
               style: TextStyle(
@@ -159,19 +274,18 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Row(
               children: [
                 ...List.generate(
                   productModel.length,
                   (index) => Padding(
-                    padding:
-                        index == 0
-                            ? EdgeInsets.only(left: 25, right: 25)
-                            : EdgeInsets.only(right: 25),
+                    padding: index == 0
+                        ? const EdgeInsets.only(left: 25, right: 25)
+                        : const EdgeInsets.only(right: 25),
                     child: FoodItemProduct(
                       productModel: productModel[index],
                     ),
@@ -179,105 +293,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Padding headerParts() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "Your Location",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black45,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 5),
-                Row(
-                  children: [
-                    Icon(Icons.location_on, color: korange, size: 20),
-                    SizedBox(width: 5),
-                    Text(
-                      "MarkYamada",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: kblack,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Icon(Icons.search, color: kblack, size: 20),
-              ),
-              const SizedBox(width: 10),
-              Stack(
-                alignment: AlignmentDirectional.topCenter,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.symmetric(vertical: 15),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black12),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: kblack,
-                      size: 20,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: GestureDetector(
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Color(0xfff95f60),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Text(
-                          "0",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
           ),
         ],
       ),
