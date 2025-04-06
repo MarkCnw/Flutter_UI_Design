@@ -31,13 +31,14 @@ class _HomePageState extends State<HomePage> {
   void filterproductBycategory(String selectCategory) {
     setState(() {
       category = selectCategory;
-      productModel = myProductModel
-          .where(
-            (element) =>
-                element.category.toLowerCase() ==
-                selectCategory.toLowerCase(),
-          )
-          .toList();
+      productModel =
+          myProductModel
+              .where(
+                (element) =>
+                    element.category.toLowerCase() ==
+                    selectCategory.toLowerCase(),
+              )
+              .toList();
     });
   }
 
@@ -75,7 +76,11 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 5),
                       Row(
                         children: const [
-                          Icon(Icons.location_on, color: korange, size: 20),
+                          Icon(
+                            Icons.location_on,
+                            color: korange,
+                            size: 20,
+                          ),
                           SizedBox(width: 5),
                           Text(
                             "MarkYamada",
@@ -95,15 +100,10 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
-                        ),
+                        border: Border.all(color: Colors.black12),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Icon(
-                        Icons.search,
-                        color: kblack,
-                      ),
+                      child: const Icon(Icons.search, color: kblack),
                     ),
                     const SizedBox(width: 10),
                     Stack(
@@ -113,9 +113,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.symmetric(vertical: 15),
                           decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black12,
-                            ),
+                            border: Border.all(color: Colors.black12),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Icon(
@@ -125,33 +123,62 @@ class _HomePageState extends State<HomePage> {
                         ),
                         cartProvider.carts.isNotEmpty
                             ? Positioned(
-                                right: 0,
-                                top: 0,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Cart(),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xfff95f60),
-                                      shape: BoxShape.circle,
+                              right: 0,
+                              top: 0,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Cart(),
                                     ),
-                                    child: Text(
-                                      cartProvider.carts.length.toString(),
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
+                                  );
+                                },
+                                child: Stack(
+                                  alignment:
+                                      AlignmentDirectional.topCenter,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(10),
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 15,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.black12,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10),
+                                      ),
+                                      child: const Icon(
+                                        Icons.shopping_cart_outlined,
+                                        color: kblack,
                                       ),
                                     ),
-                                  ),
+                                    if (cartProvider.carts.isNotEmpty)
+                                      Positioned(
+                                        right: 0,
+                                        top: 0,
+                                        child: Container(
+                                          padding: const EdgeInsets.all(8),
+                                          decoration: const BoxDecoration(
+                                            color: Color(0xfff95f60),
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Text(
+                                            cartProvider.carts.length
+                                                .toString(),
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
                                 ),
-                              )
+                              ),
+                            )
                             : const SizedBox.shrink(),
                       ],
                     ),
@@ -212,9 +239,10 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          border: category == myCategories[index].name
-                              ? Border.all(width: 2.5, color: korange)
-                              : Border.all(color: Colors.white),
+                          border:
+                              category == myCategories[index].name
+                                  ? Border.all(width: 2.5, color: korange)
+                                  : Border.all(color: Colors.white),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -283,9 +311,10 @@ class _HomePageState extends State<HomePage> {
                 ...List.generate(
                   productModel.length,
                   (index) => Padding(
-                    padding: index == 0
-                        ? const EdgeInsets.only(left: 25, right: 25)
-                        : const EdgeInsets.only(right: 25),
+                    padding:
+                        index == 0
+                            ? const EdgeInsets.only(left: 25, right: 25)
+                            : const EdgeInsets.only(right: 25),
                     child: FoodItemProduct(
                       productModel: productModel[index],
                     ),
