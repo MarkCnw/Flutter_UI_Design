@@ -6,12 +6,24 @@ import 'package:food_delivery_provider/Model/onboard_model.dart';
 
 class AppOnBoardPage extends StatefulWidget {
   const AppOnBoardPage({super.key});
-
   @override
   State<AppOnBoardPage> createState() => _AppOnBoardPageState();
 }
 
 class _AppOnBoardPageState extends State<AppOnBoardPage> {
+  late PageController _pageController;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -21,6 +33,7 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
         alignment: Alignment.bottomRight,
         children: [
           PageView.builder(
+              controller: _pageController,
             onPageChanged: (value) {
               setState(() {
                 currentIndex = value;
@@ -115,13 +128,27 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainPage(),
-                        ),
-                      );
+                      if (currentIndex < onboards.length - 1) {
+                        setState(() {
+                          currentIndex++;
+                        });
+                        // ใช้ PageController เพื่อเปลี่ยนหน้าด้วย animation
+                        _pageController.animateToPage(
+                          currentIndex,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        // ไปหน้า MainPage เมื่ออยู่ที่หน้าสุดท้าย
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainPage(),
+                          ),
+                        );
+                      }
                     },
+
                     color: korange,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -129,10 +156,13 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                     minWidth: MediaQuery.of(context).size.width - 50,
                     child: Center(
                       child: Text(
-                        "Get Start",
+                        currentIndex == onboards.length - 1
+                            ? "Get Started"
+                            : "Next",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
