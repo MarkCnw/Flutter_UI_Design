@@ -66,14 +66,7 @@ class _MainPageState extends State<MainPage> {
                             size: 30.0,
                           ),
                           const SizedBox(height: 4), // ระยะห่างเล็กน้อยระหว่างไอคอนกับจุด
-                          // Container(
-                          //   decoration: BoxDecoration(
-                          //     color: currentIndex == index ? kblack : Colors.transparent,
-                          //     shape: BoxShape.circle,
-                          //   ),
-                          //   width: currentIndex == index ? 7 : 0,
-                          //   height: currentIndex == index ? 7 : 0,
-                          // )
+                          
                         ],
                       ),
                     ),

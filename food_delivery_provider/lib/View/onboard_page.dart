@@ -18,7 +18,7 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
     return Scaffold(
       backgroundColor: kblack,
       body: Stack(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.bottomRight,
         children: [
           PageView.builder(
             onPageChanged: (value) {
