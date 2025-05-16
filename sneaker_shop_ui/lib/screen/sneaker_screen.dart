@@ -61,7 +61,7 @@ class _SneakerScreenState extends State<SneakerScreen> {
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12),
                         decoration: BoxDecoration(
-                          color: Colors.grey[100],
+                          color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
