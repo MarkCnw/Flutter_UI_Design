@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sneaker_shop_ui/screen/app_navbar_screen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }

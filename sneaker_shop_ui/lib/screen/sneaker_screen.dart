@@ -16,10 +16,12 @@ class _SneakerScreenState extends State<SneakerScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               // ส่วน AppBar (บนสุด)
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,7 +55,10 @@ class _SneakerScreenState extends State<SneakerScreen> {
               ),
               // ✅ ส่วน Search Bar (เขียนถัดจาก AppBar)
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
                 child: Row(
                   children: [
                     // ช่องค้นหา (ยืดขยาย)
@@ -66,7 +71,10 @@ class _SneakerScreenState extends State<SneakerScreen> {
                         ),
                         child: Row(
                           children: [
-                            Icon(Iconsax.search_normal, color: Colors.grey),
+                            Icon(
+                              Iconsax.search_normal,
+                              color: Colors.grey,
+                            ),
                             SizedBox(width: 8),
                             Expanded(
                               child: TextField(
@@ -94,8 +102,8 @@ class _SneakerScreenState extends State<SneakerScreen> {
                   ],
                 ),
               ),
-
             ],
+            
           ),
         ),
       ),

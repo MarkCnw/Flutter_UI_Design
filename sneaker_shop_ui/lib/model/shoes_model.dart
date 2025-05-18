@@ -158,43 +158,61 @@ List<SneakerModel> newbalanceModel = [
         "Fresh Foam shoes are engineered for comfort and support, featuring a plush midsole and breathable upper. They provide a smooth ride and excellent cushioning for runners. The stylish design and modern color options make them suitable for both workouts and casual wear.",
   ),
 ];
-List<SneakerModel> newbalanceModel = [
+List<SneakerModel> nikeModel = [
   SneakerModel(
     id: '1',
-    name: "740",
-    brand: "New Balance",
-    price: 3450,
+    name: "Giannis Immortality",
+    brand: "Nike",
+    price: 1000,
     sizes: [40, 41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.black,
-        image: "assets/newbalance/740/black.png",
+        image: "assets/nike/Giannis Immortality/black.png",
       ),
       SneakerColorOption(
-        color: Colors.white,
-        image: "assets/newbalance/740/white.png",
+        color: Colors.yellowAccent,
+        image: "assets/nike/Giannis Immortality/neon.png",
       ),
     ],
     description:
-        "Adizero shoes are designed for speed and performance, featuring lightweight materials and responsive cushioning. They provide a snug fit and excellent traction, making them ideal for runners and athletes. The sleek design and vibrant color options add a stylish touch to your athletic gear.",
+        "Giannis Immortality shoes are designed for basketball performance, featuring responsive cushioning and a supportive fit. They provide excellent traction on the court and are built to withstand the demands of the game. The stylish design and vibrant color options make them a standout choice for athletes.",
   ),
   SneakerModel(
     id: '2',
-    name: "Fresh Foam",
-    brand: "New Balance",
-    price: 5500,
+    name: "Moss Point",
+    brand: "Nike",
+    price: 5400,
     sizes: [41, 42, 43],
     colorOptions: [
       SneakerColorOption(
-        color: Colors.black,
-        image: "assets/newbalance/Fresh Foam/black.png",
-      ),
-      SneakerColorOption(
-        color: Colors.blue,
-        image: "assets/newbalance/Fresh Foam/white.png",
+        color: Colors.lightBlue,
+        image: "assets/nike/Moss Point/light_blue.png",
       ),
     ],
     description:
-        "Fresh Foam shoes are engineered for comfort and support, featuring a plush midsole and breathable upper. They provide a smooth ride and excellent cushioning for runners. The stylish design and modern color options make them suitable for both workouts and casual wear.",
+        "Moss Point shoes are designed for casual wear, featuring a comfortable fit and stylish design. They provide all-day comfort and versatility for various activities. The modern color options and sleek silhouette make them a fashionable choice for everyday wear.",
+  ),
+];
+
+List<SneakerModel> onModel = [
+  SneakerModel(
+    id: '1',
+    name: "Cloud X 4",
+    brand: "On",
+    price: 6500,
+    sizes: [40, 41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/on/Cloud X 4/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.yellowAccent,
+        image: "assets/on/Cloud X 4/yellow.png",
+      ),
+    ],
+    description:
+        "Cloud X 4 shoes are designed for versatility and performance, featuring a cushioned midsole and breathable upper. They provide a responsive ride for running and training. The lightweight design and stylish color options make them suitable for both workouts and casual wear.",
   ),
 ];
