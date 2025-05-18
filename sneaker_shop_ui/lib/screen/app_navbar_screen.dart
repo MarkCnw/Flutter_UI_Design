@@ -27,7 +27,6 @@ class _AppNavbarScreenState extends State<AppNavbarScreen> {
         height: 80,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),

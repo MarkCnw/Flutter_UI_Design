@@ -20,21 +20,20 @@ class DetailScreeen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: size.height * 0.73),
-                    Text(
-                                pets.name,
-                                style: TextStyle(
-                                  fontSize: 50,
-                                    ),
-                              ),
-                              Text(
-                                pets.description,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black54,
-                                    ),
-                              ),
+                  SizedBox(height: size.height * 0.73),
+                  Text(
+                    pets.name,
+                    style: TextStyle(
+                      fontSize: 50,
+                    ),
+                  ),
+                  Text(
+                    pets.description,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black54,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -46,7 +45,9 @@ class DetailScreeen extends StatelessWidget {
               width: size.width,
               decoration: BoxDecoration(
                 color: pets.color,
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40)),
               ),
               child: Padding(
                 padding: EdgeInsets.only(top: 40),
@@ -106,7 +107,10 @@ class DetailScreeen extends StatelessWidget {
         children: [
           Text(
             value,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black45),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.black45),
           ),
           Text(
             name,

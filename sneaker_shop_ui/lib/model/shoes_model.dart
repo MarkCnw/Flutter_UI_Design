@@ -1,0 +1,200 @@
+import 'package:flutter/material.dart';
+
+class SneakerColorOption {
+  final Color color;
+  final String image;
+
+  SneakerColorOption({required this.color, required this.image});
+}
+
+class SneakerModel {
+  final String id;
+  final String name;
+  final String brand;
+  final double price;
+  final List<int> sizes;
+  final List<SneakerColorOption> colorOptions;
+  final String description;
+
+  SneakerModel({
+    required this.id,
+    required this.name,
+    required this.brand,
+    required this.price,
+    required this.sizes,
+    required this.colorOptions,
+    required this.description,
+  });
+}
+
+List<SneakerModel> adidasModel = [
+  SneakerModel(
+    id: '1',
+    name: "Adizero",
+    brand: "Adidas",
+    price: 6500,
+    sizes: [40, 41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/adidas/Adizeross/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.yellow,
+        image: "assets/adidas/Adizeross/black.png",
+      ),
+    ],
+    description:
+        "Adizero shoes are designed for speed and performance, featuring lightweight materials and responsive cushioning. They provide a snug fit and excellent traction, making them ideal for runners and athletes. The sleek design and vibrant color options add a stylish touch to your athletic gear.",
+  ),
+  SneakerModel(
+    id: '2',
+    name: "Duramo SL 2",
+    brand: "Adidas",
+    price: 2500,
+    sizes: [41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/adidas/Duramo SL 2/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.yellow,
+        image: "assets/adidas/Duramo SL 2/yellow.png",
+      ),
+    ],
+    description:
+        "Duramo SL 2 shoes are designed for comfort and support, featuring a cushioned midsole and breathable upper. They provide a secure fit and excellent traction, making them suitable for various activities. The stylish design and versatile color options make them a great addition to your casual footwear collection.",
+  ),
+  SneakerModel(
+    id: '3',
+    name: "Supernova",
+    brand: "Adidas",
+    price: 5000,
+    sizes: [41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.white,
+        image: "assets/adidas/Supernova/white.png",
+      ),
+    ],
+    description:
+        "Supernova shoes are engineered for comfort and performance, featuring responsive cushioning and a supportive fit. They are designed to provide a smooth ride for runners of all levels. The sleek design and modern color options make them a stylish choice for both workouts and casual wear.",
+  ),
+];
+List<SneakerModel> hookaModel = [
+  SneakerModel(
+    id: '1',
+    name: "Clifton 10",
+    brand: "Hooka",
+    price: 6000,
+    sizes: [40, 41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/hooka/Clifton 10/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.red,
+        image: "assets/hooka/Clifton 10/blue.png",
+      ),
+    ],
+    description:
+        "Clifton 10 shoes are designed for comfort and cushioning, featuring a plush midsole and breathable upper. They provide a smooth ride and excellent support for runners. The lightweight design and stylish color options make them suitable for both running and casual wear.",
+  ),
+  SneakerModel(
+    id: '2',
+    name: "Elite Terrain",
+    brand: "Hooka",
+    price: 7000,
+    sizes: [41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.purpleAccent,
+        image: "assets/hooka/Elite Terrain/purple.png",
+      ),
+    ],
+    description:
+        "Elite Terrain shoes are built for rugged terrain, featuring a durable outsole and protective upper. They provide excellent traction and stability for off-road adventures. The cushioned midsole ensures comfort during long hikes or runs, making them a reliable choice for outdoor enthusiasts.",
+  ),
+];
+List<SneakerModel> newbalanceModel = [
+  SneakerModel(
+    id: '1',
+    name: "740",
+    brand: "New Balance",
+    price: 3450,
+    sizes: [40, 41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/newbalance/740/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.white,
+        image: "assets/newbalance/740/white.png",
+      ),
+    ],
+    description:
+        "Adizero shoes are designed for speed and performance, featuring lightweight materials and responsive cushioning. They provide a snug fit and excellent traction, making them ideal for runners and athletes. The sleek design and vibrant color options add a stylish touch to your athletic gear.",
+  ),
+  SneakerModel(
+    id: '2',
+    name: "Fresh Foam",
+    brand: "New Balance",
+    price: 5500,
+    sizes: [41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/newbalance/Fresh Foam/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.blue,
+        image: "assets/newbalance/Fresh Foam/white.png",
+      ),
+    ],
+    description:
+        "Fresh Foam shoes are engineered for comfort and support, featuring a plush midsole and breathable upper. They provide a smooth ride and excellent cushioning for runners. The stylish design and modern color options make them suitable for both workouts and casual wear.",
+  ),
+];
+List<SneakerModel> newbalanceModel = [
+  SneakerModel(
+    id: '1',
+    name: "740",
+    brand: "New Balance",
+    price: 3450,
+    sizes: [40, 41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/newbalance/740/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.white,
+        image: "assets/newbalance/740/white.png",
+      ),
+    ],
+    description:
+        "Adizero shoes are designed for speed and performance, featuring lightweight materials and responsive cushioning. They provide a snug fit and excellent traction, making them ideal for runners and athletes. The sleek design and vibrant color options add a stylish touch to your athletic gear.",
+  ),
+  SneakerModel(
+    id: '2',
+    name: "Fresh Foam",
+    brand: "New Balance",
+    price: 5500,
+    sizes: [41, 42, 43],
+    colorOptions: [
+      SneakerColorOption(
+        color: Colors.black,
+        image: "assets/newbalance/Fresh Foam/black.png",
+      ),
+      SneakerColorOption(
+        color: Colors.blue,
+        image: "assets/newbalance/Fresh Foam/white.png",
+      ),
+    ],
+    description:
+        "Fresh Foam shoes are engineered for comfort and support, featuring a plush midsole and breathable upper. They provide a smooth ride and excellent cushioning for runners. The stylish design and modern color options make them suitable for both workouts and casual wear.",
+  ),
+];
