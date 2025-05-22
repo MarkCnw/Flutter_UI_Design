@@ -1,4 +1,5 @@
-import 'package:ecommerce_app_ui/Utils/colors.dart';
+
+import 'package:ecommerce_app/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class MyBanner extends StatelessWidget {

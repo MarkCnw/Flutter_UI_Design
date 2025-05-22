@@ -1,10 +1,12 @@
-import 'package:ecommerce_app_ui/Models/category_model.dart';
-import 'package:ecommerce_app_ui/Models/model.dart';
-import 'package:ecommerce_app_ui/Models/sub_category.dart';
-import 'package:ecommerce_app_ui/Utils/colors.dart';
-import 'package:ecommerce_app_ui/Views/items_detail_screen.dart';
+
+import 'package:ecommerce_app/Models/category_model.dart';
+import 'package:ecommerce_app/Models/model.dart';
+import 'package:ecommerce_app/Models/sub_category.dart';
+import 'package:ecommerce_app/Utils/colors.dart';
+import 'package:ecommerce_app/Views/items_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+
 
 class CategoryItems extends StatelessWidget {
   final String category;

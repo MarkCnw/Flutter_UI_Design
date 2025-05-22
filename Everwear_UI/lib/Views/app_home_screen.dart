@@ -1,12 +1,14 @@
-import 'package:ecommerce_app_ui/Models/category_model.dart';
-import 'package:ecommerce_app_ui/Models/model.dart';
-import 'package:ecommerce_app_ui/Utils/colors.dart';
-import 'package:ecommerce_app_ui/Views/category_items.dart';
-import 'package:ecommerce_app_ui/Views/items_detail_screen.dart';
-import 'package:ecommerce_app_ui/Widget/banner.dart';
-import 'package:ecommerce_app_ui/Widget/curated_items.dart';
+
+import 'package:ecommerce_app/Models/category_model.dart';
+import 'package:ecommerce_app/Models/model.dart';
+import 'package:ecommerce_app/Utils/colors.dart';
+import 'package:ecommerce_app/Views/category_items.dart';
+import 'package:ecommerce_app/Views/items_detail_screen.dart';
+import 'package:ecommerce_app/Widget/banner.dart';
+import 'package:ecommerce_app/Widget/curated_items.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+
 
 class AppHomeScreen extends StatefulWidget {
   const AppHomeScreen({super.key});
