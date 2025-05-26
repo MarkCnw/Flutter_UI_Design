@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+import 'package:sneaker_shop_ui/provider/sneaker_detail_provider.dart';
+import 'package:sneaker_shop_ui/widget/category_chip.dart';
 
 class SneakerScreen extends StatefulWidget {
   const SneakerScreen({super.key});
@@ -9,7 +12,8 @@ class SneakerScreen extends StatefulWidget {
 }
 
 class _SneakerScreenState extends State<SneakerScreen> {
-  List<String> categories = [
+  
+  final categories = [
     'All',
     'Adidas',
     'Hooka',
@@ -41,6 +45,7 @@ class _SneakerScreenState extends State<SneakerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<SneakerProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -250,16 +255,19 @@ class _SneakerScreenState extends State<SneakerScreen> {
                     ),
                     SizedBox(height: 10),
                     SingleChildScrollView(
-                      scrollDirection: Axis.horizontal, // เพิ่มบรรทัดนี้
+                      scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: [
-                          categoryChip("All", true),
-                          categoryChip("Adidas", false),
-                          categoryChip("Hooka", false),
-                          categoryChip("New Balance", false),
-                          categoryChip("Nike", false),
-                          categoryChip("On", false),
-                        ],
+                        children:
+                            categories.map((category) {
+                              return CategoryChip(
+                                label: category,
+                                isSelected:
+                                    provider.selectedCategory == category,
+                                onTap: () {
+                                  provider.selectCategory(category);
+                                },
+                              );
+                            }).toList(),
                       ),
                     ),
                   ],

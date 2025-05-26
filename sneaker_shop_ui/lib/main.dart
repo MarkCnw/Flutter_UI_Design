@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_shop_ui/screen/app_navbar_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:sneaker_shop_ui/provider/sneaker_detail_provider.dart';
+import 'package:sneaker_shop_ui/screen/sneaker_screen.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SneakerProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,8 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AppNavbarScreen(),
-      title: 'Sneaker Shop UI',
+      home: SneakerScreen(), // 👈 หน้าหลัก
     );
   }
 }

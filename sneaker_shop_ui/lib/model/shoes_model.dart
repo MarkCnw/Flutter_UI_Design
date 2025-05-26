@@ -49,18 +49,18 @@ List<SneakerModel> adidasModel = [
   ),
   SneakerModel(
     id: '2',
-    name: "Duramo SL 2",
+    name: "DuramoSL2",
     brand: "Adidas",
     price: 2500,
     sizes: [41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.black,
-        image: "assets/adidas/Duramo SL 2/black.png",
+        image: "assets/adidas/DuramoSL2/black.png",
       ),
       SneakerColorOption(
         color: Colors.yellow,
-        image: "assets/adidas/Duramo SL 2/yellow.png",
+        image: "assets/adidas/DuramoSL2/yellow.png",
       ),
     ],
     description:
@@ -85,18 +85,18 @@ List<SneakerModel> adidasModel = [
 List<SneakerModel> hookaModel = [
   SneakerModel(
     id: '1',
-    name: "Clifton 10",
+    name: "Clifton10",
     brand: "Hooka",
     price: 6000,
     sizes: [40, 41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.black,
-        image: "assets/hooka/Clifton 10/black.png",
+        image: "assets/hooka/Clifton10/black.png",
       ),
       SneakerColorOption(
         color: Colors.red,
-        image: "assets/hooka/Clifton 10/blue.png",
+        image: "assets/hooka/Clifton10/blue.png",
       ),
     ],
     description:
@@ -104,14 +104,14 @@ List<SneakerModel> hookaModel = [
   ),
   SneakerModel(
     id: '2',
-    name: "Elite Terrain",
+    name: "EliteTerrain",
     brand: "Hooka",
     price: 7000,
     sizes: [41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.purpleAccent,
-        image: "assets/hooka/Elite Terrain/purple.png",
+        image: "assets/hooka/EliteTerrain/purple.png",
       ),
     ],
     description:
@@ -147,11 +147,11 @@ List<SneakerModel> newbalanceModel = [
     colorOptions: [
       SneakerColorOption(
         color: Colors.black,
-        image: "assets/newbalance/Fresh Foam/black.png",
+        image: "assets/newbalance/FreshFoam/black.png",
       ),
       SneakerColorOption(
         color: Colors.blue,
-        image: "assets/newbalance/Fresh Foam/white.png",
+        image: "assets/newbalance/FreshFoam/white.png",
       ),
     ],
     description:
@@ -161,18 +161,18 @@ List<SneakerModel> newbalanceModel = [
 List<SneakerModel> nikeModel = [
   SneakerModel(
     id: '1',
-    name: "Giannis Immortality",
+    name: "GiannisImmortality",
     brand: "Nike",
     price: 1000,
     sizes: [40, 41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.black,
-        image: "assets/nike/Giannis Immortality/black.png",
+        image: "assets/nike/GiannisImmortality/black.png",
       ),
       SneakerColorOption(
         color: Colors.yellowAccent,
-        image: "assets/nike/Giannis Immortality/neon.png",
+        image: "assets/nike/GiannisImmortality/neon.png",
       ),
     ],
     description:
@@ -180,14 +180,14 @@ List<SneakerModel> nikeModel = [
   ),
   SneakerModel(
     id: '2',
-    name: "Moss Point",
+    name: "MossPoint",
     brand: "Nike",
     price: 5400,
     sizes: [41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.lightBlue,
-        image: "assets/nike/Moss Point/light_blue.png",
+        image: "assets/nike/MossPoint/light_blue.png",
       ),
     ],
     description:
@@ -198,18 +198,18 @@ List<SneakerModel> nikeModel = [
 List<SneakerModel> onModel = [
   SneakerModel(
     id: '1',
-    name: "Cloud X 4",
+    name: "CloudX4",
     brand: "On",
     price: 6500,
     sizes: [40, 41, 42, 43],
     colorOptions: [
       SneakerColorOption(
         color: Colors.black,
-        image: "assets/on/Cloud X 4/black.png",
+        image: "assets/on/CloudX4/black.png",
       ),
       SneakerColorOption(
         color: Colors.yellowAccent,
-        image: "assets/on/Cloud X 4/yellow.png",
+        image: "assets/on/CloudX4/yellow.png",
       ),
     ],
     description:
