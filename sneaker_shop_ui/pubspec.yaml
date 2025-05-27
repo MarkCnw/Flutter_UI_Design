@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   iconsax: ^0.0.8
   provider: ^6.1.5
+  image: ^4.5.4
 
 dev_dependencies:
   flutter_test:

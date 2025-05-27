@@ -25,6 +25,8 @@ class SneakerModel {
     required this.colorOptions,
     required this.description,
   });
+
+
 }
 
 List<SneakerModel> adidasModel = [

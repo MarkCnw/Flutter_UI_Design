@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:sneaker_shop_ui/provider/sneaker_detail_provider.dart';
+import 'package:sneaker_shop_ui/provider/sneaker_provider.dart';
+
 import 'package:sneaker_shop_ui/widget/category_chip.dart';
 
 class SneakerScreen extends StatefulWidget {
