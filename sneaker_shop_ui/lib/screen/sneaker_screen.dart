@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:sneaker_shop_ui/provider/sneaker_provider.dart';
+import 'package:sneaker_shop_ui/model/shoes_model.dart';
+import 'package:sneaker_shop_ui/screen/sneakers_detail.dart';
 
 import 'package:sneaker_shop_ui/widget/category_chip.dart';
 
@@ -17,36 +19,30 @@ class _SneakerScreenState extends State<SneakerScreen> {
   final categories = [
     'All',
     'Adidas',
-    'Hooka',
+    'Hoka',
     'New Balance',
     'Nike',
     'On',
   ];
-  String selectedCategory = 'All';
-  // ฟังก์ชันสำหรับสร้าง Chip ของหมวดหมู่
-  Widget categoryChip(String label, bool isSelected) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: ChoiceChip(
-        label: Text(label),
-        selected: isSelected,
-        onSelected: (_) {
-          setState(() {
-            selectedCategory = label;
-          });
-        },
-        selectedColor: Colors.black,
-        backgroundColor: Colors.grey[200],
-        labelStyle: TextStyle(
-          color: isSelected ? Colors.white : Colors.black,
-        ),
-      ),
-    );
-  }
+  
+  // รวมรองเท้าทั้งหมด
+  final List<SneakerModel> allSneakers = [
+    ...adidasModel,
+    ...hookaModel,
+    ...newbalanceModel,
+    ...nikeModel,
+    ...onModel,
+  ];
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SneakerProvider>(context);
+    
+    // กรองรองเท้าตามหมวดหมู่ที่เลือก
+    final filteredSneakers = provider.selectedCategory == 'All'
+        ? allSneakers
+        : allSneakers.where((s) => s.brand == provider.selectedCategory).toList();
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -72,7 +68,7 @@ class _SneakerScreenState extends State<SneakerScreen> {
                       child: Icon(Iconsax.element_3, size: 28),
                     ),
                     Text(
-                      "Mark Shoes",
+                      "Kinetic Shoes",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -90,7 +86,7 @@ class _SneakerScreenState extends State<SneakerScreen> {
                   ],
                 ),
               ),
-              // ✅ ส่วน Search Bar (เขียนถัดจาก AppBar)
+              // ส่วน Search Bar
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 16.0,
@@ -98,16 +94,13 @@ class _SneakerScreenState extends State<SneakerScreen> {
                 ),
                 child: Row(
                   children: [
-                    // ช่องค้นหา (ยืดขยาย)
                     Expanded(
                       child: Container(
-                        height: 50, // เพิ่มความสูงที่แน่นอน
+                        height: 50,
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         decoration: BoxDecoration(
-                          color: Color(0xFFF5F5F5), // สีเทาอ่อนเหมือนเดิม
-                          borderRadius: BorderRadius.circular(
-                            12,
-                          ), // ลด radius จาก 20 เป็น 12
+                          color: Color(0xFFF5F5F5),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
                           children: [
@@ -135,15 +128,12 @@ class _SneakerScreenState extends State<SneakerScreen> {
                       ),
                     ),
                     SizedBox(width: 12),
-                    // ปุ่มกรอง (filter)
                     Container(
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.circular(
-                          12,
-                        ), // เปลี่ยนจาก circle เป็น radius 12
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
                         Iconsax.setting_4,
@@ -155,19 +145,15 @@ class _SneakerScreenState extends State<SneakerScreen> {
                 ),
               ),
 
-              //ฺBanner
+              // Banner
               Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Container(
                   width: double.infinity,
                   height: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      16,
-                    ), // ลด radius จาก 20 เป็น 16
-                    color: Color(
-                      0xFFE3F2FD,
-                    ), // ใช้สีฟ้าอ่อนที่ใกล้เคียงกับภาพมากขึ้น
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color(0xFFE3F2FD),
                   ),
                   child: Stack(
                     children: [
@@ -182,6 +168,14 @@ class _SneakerScreenState extends State<SneakerScreen> {
                             fit: BoxFit.contain,
                             width: 160,
                             height: 160,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                width: 160,
+                                height: 160,
+                                color: Colors.grey[300],
+                                child: Icon(Icons.image, size: 50),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -201,11 +195,9 @@ class _SneakerScreenState extends State<SneakerScreen> {
                             ),
                             SizedBox(height: 5),
                             Text(
-                              "Get up to 90% off",
+                              "Get upto 90% off",
                               style: TextStyle(
-                                color:
-                                    Colors
-                                        .grey[700], // เปลี่ยนจากสีขาวเป็นเทาเข้ม
+                                color: Colors.grey[700],
                                 fontSize: 16,
                               ),
                             ),
@@ -216,9 +208,7 @@ class _SneakerScreenState extends State<SneakerScreen> {
                                 backgroundColor: Colors.black,
                                 foregroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    18,
-                                  ), // ลด radius จาก 20 เป็น 12
+                                  borderRadius: BorderRadius.circular(18),
                                 ),
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 20,
@@ -240,7 +230,8 @@ class _SneakerScreenState extends State<SneakerScreen> {
                   ),
                 ),
               ),
-              //category
+              
+              // Category
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
@@ -258,22 +249,149 @@ class _SneakerScreenState extends State<SneakerScreen> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children:
-                            categories.map((category) {
-                              return CategoryChip(
-                                label: category,
-                                isSelected:
-                                    provider.selectedCategory == category,
-                                onTap: () {
-                                  provider.selectCategory(category);
-                                },
-                              );
-                            }).toList(),
+                        children: categories.map((category) {
+                          return CategoryChip(
+                            label: category,
+                            isSelected: provider.selectedCategory == category,
+                            onTap: () {
+                              provider.selectCategory(category);
+                            },
+                          );
+                        }).toList(),
                       ),
                     ),
                   ],
                 ),
               ),
+              
+              SizedBox(height: 20),
+              
+              // Grid ของรองเท้า
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    childAspectRatio: 0.8,
+                  ),
+                  itemCount: filteredSneakers.length,
+                  itemBuilder: (context, index) {
+                    final sneaker = filteredSneakers[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SneakerDetailScreen(sneaker: sneaker),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // รูปรองเท้า
+                            Expanded(
+                              flex: 3,
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Stack(
+                                    children: [
+                                      Center(
+                                        child: Image.asset(
+                                          sneaker.colorOptions[0].image,
+                                          fit: BoxFit.contain,
+                                          errorBuilder: (context, error, stackTrace) {
+                                            return Container(
+                                              color: Colors.grey[300],
+                                              child: Icon(Icons.image, size: 50),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 8,
+                                        right: 8,
+                                        child: Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black.withOpacity(0.1),
+                                                blurRadius: 4,
+                                              ),
+                                            ],
+                                          ),
+                                          child: Icon(
+                                            Icons.favorite_border,
+                                            size: 16,
+                                            color: Colors.grey[600],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // ข้อมูลรองเท้า
+                            Expanded(
+                              flex: 2,
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      sneaker.name,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      '\$${sneaker.price.toStringAsFixed(2)}',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              
+              SizedBox(height: 80), // เพิ่มพื้นที่ว่างด้านล่าง
             ],
           ),
         ),

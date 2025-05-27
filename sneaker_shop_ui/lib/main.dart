@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:sneaker_shop_ui/provider/sneaker_provider.dart';
 import 'package:sneaker_shop_ui/screen/sneaker_screen.dart';
 

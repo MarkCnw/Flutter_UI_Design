@@ -62,11 +62,16 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/adidas/
-    - assets/nike/
-    - assets/hooka/
-    - assets/newbalance/
-    -  assets/on/cloudx4/
+    - assets/on/cloudx4/
+    - assets/adidas/adizeross/
+    - assets/adidas/duramosl2/
+    - assets/adidas/supernova/
+    - assets/hooka/clifton10/
+    - assets/hooka/eliteterrain/
+    - assets/newbalance/740/
+    - assets/newbalance/freshfoam/
+    - assets/nike/giannis/
+    - assets/nike/mosspoint/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
