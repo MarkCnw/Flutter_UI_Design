@@ -23,6 +23,7 @@ class _AppNavbarScreenState extends State<AppNavbarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(

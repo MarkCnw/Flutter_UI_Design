@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:iconsax/iconsax.dart';
 import 'package:sneaker_shop_ui/model/shoes_model.dart';
 
 class SneakerDetailScreen extends StatefulWidget {
@@ -13,64 +13,53 @@ class SneakerDetailScreen extends StatefulWidget {
 
 class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
   int selectedColorIndex = 0;
-  int selectedSizeIndex = -1;
+  int selectedSizeIndex = 2; // Default to size 41 (index 2)
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE3F2FD), // สีฟ้าอ่ونเหมือนในรูป
+      backgroundColor: Color(0xFFE3F2FD), // Light blue background
       body: SafeArea(
         child: Column(
           children: [
-            // Header
+            // Header with back button and close (X)
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // Empty space to balance the layout
+                  SizedBox(width: 24),
+                  // Close button (X)
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: Icon(Icons.arrow_back_ios_new, size: 20),
+                    child: Icon(
+                      Icons.close,
+                      size: 24,
+                      color: Colors.black,
                     ),
                   ),
-                  Icon(Icons.more_vert, size: 24),
                 ],
               ),
             ),
 
-            // รูปรองเท้า
+            // Shoe image section
             Expanded(
               flex: 2,
               child: Container(
                 width: double.infinity,
                 child: Center(
                   child: Transform.rotate(
-                    angle: -0.2,
+                    angle: -0.15, // Slight rotation
                     child: Image.asset(
-                      widget
-                          .sneaker
-                          .colorOptions[selectedColorIndex]
-                          .image,
-                      width: 250,
-                      height: 250,
+                      widget.sneaker.colorOptions[selectedColorIndex].image,
+                      width: 280,
+                      height: 280,
                       fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                          width: 250,
-                          height: 250,
+                          width: 280,
+                          height: 280,
                           color: Colors.grey[300],
                           child: Icon(Icons.image, size: 100),
                         );
@@ -81,7 +70,7 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
               ),
             ),
 
-            // ส่วนล่าง - ข้อมูลสินค้า
+            // Product details section
             Expanded(
               flex: 3,
               child: Container(
@@ -94,31 +83,26 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(24.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // ชื่อและดาว
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              widget.sneaker.name,
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Icon(Icons.close, color: Colors.grey),
-                        ],
+                      // Product name
+                      Text(
+                        "Nike Air Max Pre-Day", // Fixed name as shown in image
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
 
-                      // ดาวและรีวิว
+                      SizedBox(height: 8),
+
+                      // Rating and reviews
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.orange, size: 16),
+                          Icon(Icons.star, color: Colors.blue, size: 18),
                           SizedBox(width: 4),
                           Text(
                             "5.0 (17 reviews)",
@@ -130,185 +114,153 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                         ],
                       ),
 
-                      SizedBox(height: 20),
+                      SizedBox(height: 24),
 
-                      // Size
+                      // Size section
                       Text(
                         "Size:",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
+                          color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 10),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children:
-                              widget.sneaker.sizes.asMap().entries.map((
-                                entry,
-                              ) {
-                                int index = entry.key;
-                                int size = entry.value;
-                                bool isSelected =
-                                    selectedSizeIndex == index;
-
-                                return GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      selectedSizeIndex = index;
-                                    });
-                                  },
-                                  child: Container(
-                                    margin: EdgeInsets.only(right: 12),
-                                    width: 45,
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          isSelected
-                                              ? Colors.blue
-                                              : Colors.grey[100],
-                                      borderRadius: BorderRadius.circular(
-                                        12,
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        size.toString(),
-                                        style: TextStyle(
-                                          color:
-                                              isSelected
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }).toList(),
-                        ),
+                      SizedBox(height: 12),
+                      
+                      // Size options
+                      Row(
+                        children: [
+                          _buildSizeOption("39", 0),
+                          _buildSizeOption("40", 1),
+                          _buildSizeOption("41", 2),
+                          _buildSizeOption("42", 3),
+                          _buildSizeOption("43", 4),
+                          _buildSizeOption("44", 5),
+                          _buildSizeOption("45", 6),
+                        ],
                       ),
 
-                      SizedBox(height: 20),
+                      SizedBox(height: 24),
 
-                      // Select Color
+                      // Select Color section
                       Text(
                         "Select Color:",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
+                          color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 12),
+                      
+                      // Color options
                       Row(
-                        children:
-                            widget.sneaker.colorOptions
-                                .asMap()
-                                .entries
-                                .map((entry) {
-                                  int index = entry.key;
-                                  SneakerColorOption colorOption =
-                                      entry.value;
-                                  bool isSelected =
-                                      selectedColorIndex == index;
-
-                                  return GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedColorIndex = index;
-                                      });
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 12),
-                                      width: 35,
-                                      height: 35,
-                                      decoration: BoxDecoration(
-                                        color: colorOption.color,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color:
-                                              isSelected
-                                                  ? Colors.black
-                                                  : Colors.grey[300]!,
-                                          width: isSelected ? 3 : 1,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                })
-                                .toList(),
+                        children: [
+                          _buildColorOption(Color(0xFF87CEEB), 0), // Light blue
+                          _buildColorOption(Color(0xFF90EE90), 1), // Light green
+                          _buildColorOption(Color(0xFFDDA0DD), 2), // Plum/Light purple
+                        ],
                       ),
 
-                      SizedBox(height: 20),
+                      SizedBox(height: 24),
 
                       // Description
                       Text(
                         "Description",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
+                          color: Colors.black,
                         ),
                       ),
                       SizedBox(height: 8),
                       Text(
-                        widget.sneaker.description,
+                        "Nike Air Max is a line of shoes produced by Nike, Inc. with the first model released in 1987. Air Max shoes are identified by their midsoles incorporating filled with pressurized gas, visible from the exterior of the shoe and intended to provide cushioning to the underfoot. Nike Air Max is a line of shoes produced by Nike Inc. with",
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 14,
                           height: 1.5,
                         ),
-                        maxLines: 3,
+                        maxLines: 4,
                         overflow: TextOverflow.ellipsis,
                       ),
 
                       Spacer(),
 
-                      // Bottom section with color selector and add button
+                      // Bottom section with color indicators and add button
                       Row(
                         children: [
-                          // Color circles
-                          Row(
-                            children:
-                                widget.sneaker.colorOptions
-                                    .asMap()
-                                    .entries
-                                    .map((entry) {
-                                      int index = entry.key;
-                                      SneakerColorOption colorOption =
-                                          entry.value;
-
-                                      return Container(
-                                        margin: EdgeInsets.only(right: 8),
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: colorOption.color,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.grey[300]!,
-                                            width: 1,
-                                          ),
-                                        ),
-                                      );
-                                    })
-                                    .toList(),
+                          // Small color indicators
+                          Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF87CEEB),
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[400],
+                              shape: BoxShape.circle,
+                            ),
                           ),
 
                           Spacer(),
 
-                          // Add button
+                          // Add to cart button
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: 60,
+                            height: 60,
                             decoration: BoxDecoration(
                               color: Colors.grey[700],
                               shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 8,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
                             ),
                             child: Icon(
                               Icons.add,
                               color: Colors.white,
-                              size: 24,
+                              size: 28,
+                            ),
+                          ),
+
+                          SizedBox(width: 12),
+
+                          // Additional icons
+                          Container(
+                            width: 45,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Iconsax.profile_2user,
+                              color: Colors.grey[600],
+                              size: 20,
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Container(
+                            width: 45,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Iconsax.search_normal,
+                              color: Colors.grey[600],
+                              size: 20,
                             ),
                           ),
                         ],
@@ -317,6 +269,68 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                   ),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSizeOption(String size, int index) {
+    bool isSelected = selectedSizeIndex == index;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedSizeIndex = index;
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 12),
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+          color: isSelected ? Color(0xFF87CEEB) : Colors.grey[100],
+          borderRadius: BorderRadius.circular(12),
+          border: isSelected ? Border.all(color: Color(0xFF87CEEB), width: 2) : null,
+        ),
+        child: Center(
+          child: Text(
+            size,
+            style: TextStyle(
+              color: isSelected ? Colors.white : Colors.black,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildColorOption(Color color, int index) {
+    bool isSelected = selectedColorIndex == index;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedColorIndex = index;
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 16),
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isSelected ? Colors.black : Colors.grey[300]!,
+            width: isSelected ? 3 : 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 4,
+              offset: Offset(0, 2),
             ),
           ],
         ),
