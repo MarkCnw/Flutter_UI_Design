@@ -120,6 +120,92 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                         }).toList(),
                   ),
                   SizedBox(height: 20),
+                  Text(
+                    'select color',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children:
+                        sneaker.colorOptions.asMap().entries.map((entry) {
+                          int index = entry.key;
+                          SneakerColorOption option = entry.value;
+                          bool isSelected = _selectedColorIndex == index;
+
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _selectedColorIndex = index;
+                              });
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 12),
+                              width: 28,
+                              height: 28,
+                              decoration: BoxDecoration(
+                                color: option.color,
+                                shape: BoxShape.circle,
+                                border:
+                                    isSelected
+                                        ? Border.all(
+                                          color: Colors.black,
+                                          width: 2,
+                                        )
+                                        : null,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Description:',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    sneaker.description,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(color: Colors.black12, blurRadius: 8),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    '\$${sneaker.price.toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 12,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                    child: Icon(Icons.shopping_cart_outlined,color: Colors.white,size: 30,)
+                  ),
                 ],
               ),
             ),
