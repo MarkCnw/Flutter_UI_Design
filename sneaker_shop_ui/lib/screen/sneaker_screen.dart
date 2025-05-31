@@ -413,7 +413,6 @@ class _SneakerScreenState extends State<SneakerScreen> {
                             ),
                             Expanded(
                               flex: 2,
-
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 16.0,
