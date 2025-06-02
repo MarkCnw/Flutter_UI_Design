@@ -82,7 +82,7 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                   // Size selection
                   Text(
                     'Size:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
                   ),
                   SizedBox(height: 8),
                   Wrap(
@@ -124,7 +124,7 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                   SizedBox(height: 20),
                   Text(
                     'select color',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
                   ),
                   SizedBox(height: 8),
                   Row(
@@ -162,7 +162,7 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                   SizedBox(height: 20),
                   Text(
                     'Description:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
                   ),
                   SizedBox(height: 8),
                   Text(
