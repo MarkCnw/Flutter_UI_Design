@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sneaker_shop_ui/model/shoes_model.dart';
+import 'package:sneaker_shop_ui/screen/cart_screen.dart';
+import 'package:sneaker_shop_ui/services/cart_services.dart';
 
 class SneakerDetailScreen extends StatefulWidget {
   final SneakerModel sneaker;
@@ -193,7 +195,24 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                   ),
                   Spacer(),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      final sneaker = widget.sneaker;
+                      final selectedColorOption =
+                          sneaker.colorOptions[_selectedColorIndex];
+
+                      CartManager.addItem(
+                        sneaker,
+                        _selectedSize,
+                        selectedColorOption,
+                      );
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CartScreen(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       padding: EdgeInsets.symmetric(
@@ -204,7 +223,11 @@ class _SneakerDetailScreenState extends State<SneakerDetailScreen> {
                         borderRadius: BorderRadius.circular(18),
                       ),
                     ),
-                    child: Icon(Icons.shopping_cart_outlined,color: Colors.white,size: 30,)
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
                   ),
                 ],
               ),
