@@ -29,8 +29,36 @@ class WelcomeScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
               ),
-               Spacer(flex: 3),
-              ElevatedButton(onPressed: (){}, child: Text(Login,style: TextStyle(),))
+              Spacer(flex: 3),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  minimumSize: Size(300, 50),
+                ),
+                child: Text(
+                  "Login",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[300], // สีเทาอ่อน
+                  elevation: 0,
+                  minimumSize: Size(300, 50),
+                ),
+                child: Text(
+                  "Register",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              SizedBox(height: 40),
             ],
           ),
         ),
