@@ -16,17 +16,32 @@ class RegisterScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Container(
-              width: 300,
-              height: 200,
-              color: Colors.grey[100], // พื้นหลังสีเทา
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                shape: BoxShape.circle,
+              ),
               child: Stack(
                 children: [
-                  // Profile card content
-                  Image.asset('assets/image.png'),
+                  Center(child: Icon(Icons.notifications, size: 30)),
                   Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: Icon(Icons.edit),
+                    right: 8,
+                    top: 8,
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Text(
+                        '9+',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
