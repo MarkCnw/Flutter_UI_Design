@@ -9,56 +9,80 @@ class WelcomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Spacer(flex: 2),
-              Image.asset("assets/illustrations/solo.png", height: 400),
-              SizedBox(height: 20),
+              Container(
+                margin: EdgeInsets.only(bottom: 0),
+                child: Image.asset("assets/illustrations/solo.png", height: 360),
+              ),
+              SizedBox(height: 0), // แนบสุดแล้ว
               Text(
-                textAlign: TextAlign.center,
                 "Welcome To\nYamada",
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 2),
               Text(
-                "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et\ndolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 16,
+                  height: 1.5,
+                ),
               ),
-              Spacer(flex: 3),
+              SizedBox(height: 120),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/login');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
-                  minimumSize: Size(300, 50),
+                  foregroundColor: Colors.white,
+                  elevation: 0,
+                  minimumSize: Size(330, 60),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
                 ),
                 child: Text(
                   "Login",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 14),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[300], // สีเทาอ่อน
+                  backgroundColor: Color(0xFFB0B0B0),
+                  foregroundColor: Colors.black,
                   elevation: 0,
-                  minimumSize: Size(300, 50),
+                  minimumSize: Size(330, 60),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
                 ),
                 child: Text(
                   "Register",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              SizedBox(height: 40),
             ],
           ),
         ),
