@@ -7,8 +7,8 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
+      body: SafeArea(
+        child: SingleChildScrollView(
           padding: EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,9 +34,9 @@ class RegisterScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Text(
-                "Welcome back\nYou've been missed!", // เพิ่ม apostrophe
+                "Create your account\nLet's get started!", 
                 style: TextStyle(
-                  fontSize: 20, // ลดขนาดลง (ตอนนี้ 30 ใหญ่เกิน)
+                  fontSize: 20,
                   color: Colors.grey[600],
                 ),
               ),
@@ -48,44 +48,36 @@ class RegisterScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              SizedBox(height: 8), 
               TextFormField(
                 decoration: InputDecoration(
                   hintText: "Enter Full Name",
                   hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[400], // เปลี่ยนเป็นสีอ่อนกว่า
+                    color: Colors.grey[400],
                   ),
-
-                  // ขอบปกติ (ไม่ได้โฟกัส)
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      15,
-                    ), // ใช้ 15 เหมือน border
+                    borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[300]!, // สีเทาอ่อน
+                      color: Colors.grey[300]!,
                       width: 1.0,
                     ),
                   ),
-
-                  // ขอบตอนโฟกัส
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!, // สีเทาเข้มขึ้นเล็กน้อย
+                      color: Colors.grey[400]!,
                       width: 1.5,
                     ),
                   ),
-
-                  // ขอบเริ่มต้น
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(color: Colors.grey[300]!),
                   ),
-
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 16, 
+                    vertical: 16,
                   ),
                 ),
               ),
@@ -97,44 +89,37 @@ class RegisterScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              SizedBox(height: 8),
               TextFormField(
+                keyboardType: TextInputType.emailAddress, 
                 decoration: InputDecoration(
-                  hintText: "Enter Password",
+                  hintText: "Enter Email", 
                   hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[400], // เปลี่ยนเป็นสีอ่อนกว่า
+                    color: Colors.grey[400],
                   ),
-
-                  // ขอบปกติ (ไม่ได้โฟกัส)
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      15,
-                    ), // ใช้ 15 เหมือน border
+                    borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[300]!, // สีเทาอ่อน
+                      color: Colors.grey[300]!,
                       width: 1.0,
                     ),
                   ),
-
-                  // ขอบตอนโฟกัส
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!, // สีเทาเข้มขึ้นเล็กน้อย
+                      color: Colors.grey[400]!,
                       width: 1.5,
                     ),
                   ),
-
-                  // ขอบเริ่มต้น
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(color: Colors.grey[300]!),
                   ),
-
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 16, // เพิ่มเป็น 16 ให้สูงขึ้น
+                    vertical: 16,
                   ),
                 ),
               ),
@@ -146,44 +131,37 @@ class RegisterScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              SizedBox(height: 8), 
               TextFormField(
+                obscureText: true, 
                 decoration: InputDecoration(
                   hintText: "Enter Password",
                   hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[400], // เปลี่ยนเป็นสีอ่อนกว่า
+                    color: Colors.grey[400],
                   ),
-
-                  // ขอบปกติ (ไม่ได้โฟกัส)
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      15,
-                    ), // ใช้ 15 เหมือน border
+                    borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[300]!, // สีเทาอ่อน
+                      color: Colors.grey[300]!,
                       width: 1.0,
                     ),
                   ),
-
-                  // ขอบตอนโฟกัส
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!, // สีเทาเข้มขึ้นเล็กน้อย
+                      color: Colors.grey[400]!,
                       width: 1.5,
                     ),
                   ),
-
-                  // ขอบเริ่มต้น
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(color: Colors.grey[300]!),
                   ),
-
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 16, // เพิ่มเป็น 16 ให้สูงขึ้น
+                    vertical: 16,
                   ),
                 ),
               ),
@@ -195,46 +173,94 @@ class RegisterScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              SizedBox(height: 8), 
               TextFormField(
+                obscureText: true, 
                 decoration: InputDecoration(
                   hintText: "Confirm Password",
                   hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[400], // เปลี่ยนเป็นสีอ่อนกว่า
+                    color: Colors.grey[400],
                   ),
-
-                  // ขอบปกติ (ไม่ได้โฟกัส)
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      15,
-                    ), // ใช้ 15 เหมือน border
+                    borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[300]!, // สีเทาอ่อน
+                      color: Colors.grey[300]!,
                       width: 1.0,
                     ),
                   ),
-
-                  // ขอบตอนโฟกัส
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!, // สีเทาเข้มขึ้นเล็กน้อย
+                      color: Colors.grey[400]!,
                       width: 1.5,
                     ),
                   ),
-
-                  // ขอบเริ่มต้น
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(color: Colors.grey[300]!),
                   ),
-
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 16, // เพิ่มเป็น 16 ให้สูงขึ้น
+                    vertical: 16,
                   ),
                 ),
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account? ", 
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      "Login", // เอาช่องว่างออก
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 60),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/welcome');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFFB0B0B0),
+                  foregroundColor: Colors.black,
+                  elevation: 0,
+                  minimumSize: Size(330, 60),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
+                child: Text(
+                  "Register",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+                ],
               ),
             ],
           ),

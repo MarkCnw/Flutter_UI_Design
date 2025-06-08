@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,15 +35,15 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Text(
-                "Welcome back\nYou've been missed!", // เพิ่ม apostrophe
+                "Welcome back\nYou've been missed!", 
                 style: TextStyle(
-                  fontSize: 20, // ลดขนาดลง (ตอนนี้ 30 ใหญ่เกิน)
+                  fontSize: 20, 
                   color: Colors.grey[600],
                 ),
               ),
               SizedBox(height: 40),
 
-              // Username Field
+              
               Text(
                 "Username or Email",
                 style: TextStyle(
@@ -58,30 +58,30 @@ class LoginScreen extends StatelessWidget {
                   hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[400], // เปลี่ยนเป็นสีอ่อนกว่า
+                    color: Colors.grey[400], 
                   ),
 
-                  // ขอบปกติ (ไม่ได้โฟกัส)
+                  
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
                       15,
-                    ), // ใช้ 15 เหมือน border
+                    ), 
                     borderSide: BorderSide(
-                      color: Colors.grey[300]!, // สีเทาอ่อน
+                      color: Colors.grey[300]!, 
                       width: 1.0,
                     ),
                   ),
 
-                  // ขอบตอนโฟกัส
+                  
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!, // สีเทาเข้มขึ้นเล็กน้อย
+                      color: Colors.grey[400]!, 
                       width: 1.5,
                     ),
                   ),
 
-                  // ขอบเริ่มต้น
+                  
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(color: Colors.grey[300]!),
@@ -89,12 +89,12 @@ class LoginScreen extends StatelessWidget {
 
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 16, // เพิ่มเป็น 16 ให้สูงขึ้น
+                    vertical: 16, 
                   ),
                 ),
               ),
               SizedBox(height: 16),
-              // Password Field
+              
               Text(
                 "Password",
                 style: TextStyle(
@@ -103,35 +103,36 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               TextFormField(
+                obscureText: true,
                 decoration: InputDecoration(
                   hintText: "Enter Password",
                   hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey[400], // เปลี่ยนเป็นสีอ่อนกว่า
+                    color: Colors.grey[400], 
                   ),
 
-                  // ขอบปกติ (ไม่ได้โฟกัส)
+                  
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
                       15,
-                    ), // ใช้ 15 เหมือน border
+                    ), 
                     borderSide: BorderSide(
-                      color: Colors.grey[300]!, // สีเทาอ่อน
+                      color: Colors.grey[300]!, 
                       width: 1.0,
                     ),
                   ),
 
-                  // ขอบตอนโฟกัส
+                  
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!, // สีเทาเข้มขึ้นเล็กน้อย
+                      color: Colors.grey[400]!, 
                       width: 1.5,
                     ),
                   ),
 
-                  // ขอบเริ่มต้น
+                 
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(color: Colors.grey[300]!),
@@ -139,7 +140,7 @@ class LoginScreen extends StatelessWidget {
 
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 16, // เพิ่มเป็น 16 ให้สูงขึ้น
+                    vertical: 16, 
                   ),
                 ),
               ),
@@ -258,10 +259,10 @@ class LoginScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white,
-                      elevation: 0, // ไม่มีเงา
-                      minimumSize: Size(330, 60), // ขนาดใหญ่ขึ้น
+                      elevation: 0, 
+                      minimumSize: Size(330, 60),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18), // มุมมน
+                        borderRadius: BorderRadius.circular(18), 
                       ),
                     ),
 
